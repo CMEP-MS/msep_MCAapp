@@ -1,14 +1,24 @@
 project:
     type: website
     output-dir: docs
+    render:
+      - MCAexploration.qmd
 website:
     title: "MCA"
     site-url: https://cmep-ms.github.io/msep_MCAapp
     repo-url: https://github.com/CMEP-MS/msep_MCAapp
     repo-actions: [source]
-html:
+format:
+  html:
     toc: true
+    toc-depth: 2
+    toc-location: right
     code-links:
-      text: Source Repository
-      icon: github
-      href: https://github.com/CMEP-MS/msep_MCAapp
+      - text: Source Repository
+        icon: github
+        href: https://github.com/CMEP-MS/msep_MCAapp
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: true

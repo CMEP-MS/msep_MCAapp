@@ -1,0 +1,159 @@
+
+Units for this parameter are **`r mca_params$Units[which(mca_params$Parameter == param)]`**
+
+::: {.panel-tabset}
+
+### Faceted Map  
+
+
+```{r}
+#| fig-width: 8
+#| fig-height: 10
+
+tmap_mode("plot")
+
+param_map <- tm_shape(param_data) +
+  tm_basemap("CartoDB.Positron") +
+  tm_symbols(
+    col = "purple",   
+    fill = "Value",
+    fill.scale = var_scales[[param]],
+    shape = "LongTermStation",
+    size = 1
+  ) +
+  tm_facets_wrap(by = "Year", ncol = 3) +
+  tm_title(param)
+
+print(param_map)
+```
+
+### Time Series  
+
+**There are two graphs in this tab; be sure to scroll!**  
+
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4.5
+
+p2 <- ggplot(param_summs,
+             aes(x = Year,
+                 y = median,
+                 col = Area,
+                 shape = Area)) +
+  geom_line(alpha = 0.8) +
+  geom_point(size = 2,
+             stroke = 2,
+             alpha = 0.8) +
+  theme_bw() +
+  labs(title = param,
+       subtitle = "Annual Median by Region") +
+  theme(legend.position = "top")
+
+print(p2)
+cat("\n\n")
+```
+  
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+
+
+p <- ggplot(param_data,
+            aes(x = Year,
+                y = Value,
+                col = Area)) +
+  geom_jitter(size = 2,
+              alpha = 0.8) +
+  # scale_y_log10() +
+  facet_wrap(~ Area) +
+  geom_smooth(se = FALSE) +
+  theme_bw() +
+  labs(title = param) +
+  theme(legend.position = "none")
+
+if (mca_params$ScaleType[which(mca_params$Parameter == param)] != "continuous") {
+  p <- p +
+    scale_y_log10() +
+    labs(y = "Value\n(note log scale)")
+}
+
+print(p)
+cat("\n\n")
+```
+
+### Summary Table  
+```{r}
+#| results: "asis"
+
+tbl <- param_data |>
+  st_drop_geometry() |> 
+  group_by(Year) |>
+  summarise(
+    N      = n(),
+    Mean   = round(mean(Value, na.rm = TRUE), 3),
+    Median = round(median(Value, na.rm = TRUE), 3),
+    SD     = round(sd(Value, na.rm = TRUE), 3),
+    IQR = round(IQR(Value, na.rm = TRUE), 3),
+    Min    = round(min(Value, na.rm = TRUE), 3),
+    Max    = round(max(Value, na.rm = TRUE), 3)
+  )
+print(knitr::kable(tbl))
+cat("\n\n")
+```
+
+
+### Histograms  
+
+**There are two graphs in this tab; be sure to scroll!**  
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5.5
+
+p <- ggplot(param_data,
+            aes(x = Value,
+                fill = Area)) +
+  geom_histogram(bins = 30,
+                 col = "gray40") +
+  theme_bw() +
+  facet_wrap(~Area, scales = "free_y") +
+  labs(title = param,
+       subtitle = "across all years") +
+  theme(legend.position = "none")
+
+if (mca_params$ScaleType[which(mca_params$Parameter == param)] != "continuous") {
+  p <- p +
+    scale_x_log10() +
+    labs(x = "Value (note log scale)")
+}
+
+print(p)
+cat("\n\n")
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4.5
+
+p <- ggplot(param_data,
+            aes(x = Value)) +
+  geom_histogram(bins = 30,
+                 col = "gray40",
+                 fill = "cadetblue3") +
+  theme_bw() +
+  labs(title = param,
+       subtitle = "across all years and regions")
+
+if (mca_params$ScaleType[which(mca_params$Parameter == param)] != "continuous") {
+  p <- p +
+    scale_x_log10() +
+    labs(x = "Value (note log scale)")
+}
+
+print(p)
+cat("\n\n")
+```
+
+
+:::

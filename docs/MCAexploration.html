@@ -1,0 +1,4797 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mississippi Coastal Assessment Exploration, by Parameter – MCA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1d4f84655f446305ac42a8f1abcf7405.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link active" data-scroll-target="#about-the-data">About the data</a></li>
+  <li><a href="#exploration-by-parameter" id="toc-exploration-by-parameter" class="nav-link" data-scroll-target="#exploration-by-parameter">Exploration by Parameter</a>
+  <ul class="collapse">
+  <li><a href="#ammonia-nitrogen-dissolved" id="toc-ammonia-nitrogen-dissolved" class="nav-link" data-scroll-target="#ammonia-nitrogen-dissolved">Ammonia-nitrogen, Dissolved</a></li>
+  <li><a href="#ammonia-nitrogen-total" id="toc-ammonia-nitrogen-total" class="nav-link" data-scroll-target="#ammonia-nitrogen-total">Ammonia-nitrogen, Total</a></li>
+  <li><a href="#chemical-oxygen-demand" id="toc-chemical-oxygen-demand" class="nav-link" data-scroll-target="#chemical-oxygen-demand">Chemical oxygen demand</a></li>
+  <li><a href="#chlorophyll-a-uncorrected-for-pheophytin" id="toc-chlorophyll-a-uncorrected-for-pheophytin" class="nav-link" data-scroll-target="#chlorophyll-a-uncorrected-for-pheophytin">Chlorophyll a, uncorrected for pheophytin</a></li>
+  <li><a href="#depth-secchi-disk-depth" id="toc-depth-secchi-disk-depth" class="nav-link" data-scroll-target="#depth-secchi-disk-depth">Depth, Secchi disk depth</a></li>
+  <li><a href="#depth-bottom" id="toc-depth-bottom" class="nav-link" data-scroll-target="#depth-bottom">Depth, bottom</a></li>
+  <li><a href="#dissolved-oxygen-do" id="toc-dissolved-oxygen-do" class="nav-link" data-scroll-target="#dissolved-oxygen-do">Dissolved oxygen (DO)</a></li>
+  <li><a href="#dissolved-oxygen-saturation" id="toc-dissolved-oxygen-saturation" class="nav-link" data-scroll-target="#dissolved-oxygen-saturation">Dissolved oxygen saturation</a></li>
+  <li><a href="#kjeldahl-nitrogen-total" id="toc-kjeldahl-nitrogen-total" class="nav-link" data-scroll-target="#kjeldahl-nitrogen-total">Kjeldahl nitrogen, Total</a></li>
+  <li><a href="#nitrate-nitrite-total" id="toc-nitrate-nitrite-total" class="nav-link" data-scroll-target="#nitrate-nitrite-total">Nitrate + Nitrite, Total</a></li>
+  <li><a href="#nitrate-dissolved" id="toc-nitrate-dissolved" class="nav-link" data-scroll-target="#nitrate-dissolved">Nitrate, Dissolved</a></li>
+  <li><a href="#nitrite-dissolved" id="toc-nitrite-dissolved" class="nav-link" data-scroll-target="#nitrite-dissolved">Nitrite, Dissolved</a></li>
+  <li><a href="#orthophosphate-dissolved" id="toc-orthophosphate-dissolved" class="nav-link" data-scroll-target="#orthophosphate-dissolved">Orthophosphate, Dissolved</a></li>
+  <li><a href="#phosphorus-total" id="toc-phosphorus-total" class="nav-link" data-scroll-target="#phosphorus-total">Phosphorus, Total</a></li>
+  <li><a href="#salinity" id="toc-salinity" class="nav-link" data-scroll-target="#salinity">Salinity</a></li>
+  <li><a href="#specific-conductance" id="toc-specific-conductance" class="nav-link" data-scroll-target="#specific-conductance">Specific conductance</a></li>
+  <li><a href="#temperature-water" id="toc-temperature-water" class="nav-link" data-scroll-target="#temperature-water">Temperature, water</a></li>
+  <li><a href="#total-suspended-solids-suspended" id="toc-total-suspended-solids-suspended" class="nav-link" data-scroll-target="#total-suspended-solids-suspended">Total suspended solids, Suspended</a></li>
+  <li><a href="#turbidity" id="toc-turbidity" class="nav-link" data-scroll-target="#turbidity">Turbidity</a></li>
+  <li><a href="#ph" id="toc-ph" class="nav-link" data-scroll-target="#ph">pH</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/CMEP-MS/msep_MCAapp/blob/main/MCAexploration.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/CMEP-MS/msep_MCAapp"><i class="bi bi-github"></i>Source Repository</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mississippi Coastal Assessment Exploration, by Parameter</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="about-the-data" class="level1">
+<h1>About the data</h1>
+<p>Data for all years of <a href="https://www.mdeq.ms.gov/">Mississippi Department of Environmental Quality’s</a> annual Mississippi Coastal Assessment (MCA) were downloaded from the <a href="https://www.waterqualitydata.us/">Water Quality Portal</a> on 3/11/2026. Detail on the query and data processing steps are below.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The query url that yielded the file is:</p>
+<pre><code>https://www.waterqualitydata.us/#statecode=US%3A28&amp;organization=21MSWQ_WQX&amp;sampleMedia=Water&amp;project=MCA10&amp;project=MCA11&amp;project=MCA12&amp;project=MCA13&amp;project=MCA14&amp;project=MCA15&amp;project=MCA16&amp;project=MCA17&amp;project=MCA18&amp;project=MCA19&amp;project=MCA20&amp;project=MCA21&amp;project=MCA22&amp;project=MCA23&amp;project=MCA24&amp;startDateLo=01-01-2000&amp;startDateHi=12-31-2025&amp;mimeType=csv&amp;dataProfile=resultPhysChem&amp;providers=NWIS&amp;providers=STORET"</code></pre>
+<section id="steps-followed-after-download" class="level3">
+<h3 class="anchored" data-anchor-id="steps-followed-after-download">Steps followed after download</h3>
+<ol type="1">
+<li>Parameter names in the <code>CharacteristicName</code> were combined with associated details from the <code>ResultSampleFractionText</code> column, into a single <code>Parameter</code> column, to differentiate total and dissolved forms of nutrients.</li>
+<li>Verified that parameter names were consistent; one parameter is represented by one name throughout.
+<ol type="a">
+<li>Many rows had a <code>CharacteristicName</code> of “Inorganic nitrogen (nitrate and nitrite) *<strong>retired*</strong>use Nitrate + Nitrite, Total”. These were converted to “Nitrate + Nitrite, Total”.<br>
+</li>
+</ol></li>
+<li>Verified that parameter names had consistent units of reporting.
+<ol type="a">
+<li>Secchi disk depth was reported in “ft” for 32 sampling events, and in “m” for the remaining 441. This appeared to be limited to 2014 sampling. These values were converted to m to be consistent with other values.<br>
+</li>
+<li>Many rows did not have reported units. A separate data frame was made to track units for each parameter.<br>
+</li>
+</ol></li>
+<li>When results were below detection (denoted in the original <code>ResultDetectionConditionText</code> column as “Present Below Quantification Limit”), the MDL provided in the <code>DetectionQuantitationLimitMeasure.MeasureValue</code> column was inserted into the <code>Value</code> field (which had been NA otherwise). A <code>Censored</code> column was created, with 1s in the same rows to denote &lt;MDL results, and 0s in rows that were not censored values.<br>
+</li>
+<li>Long-term stations were identified as those sampled on more than 1 date. This yielded 8 stations, 5 of which were sampled in all 15 years and the others sampled for 10 or 11 years. A <code>TRUE/FALSE</code> column, <code>LongTermStation</code>, was added to the data frame to denote this.<br>
+</li>
+<li>GPS Coordinates were corrected for the following:
+<ol type="a">
+<li>In 2020, one data point had an associated longitude of 88.xxxx rather than -88.xxxx. Now all Longitude values are checked and if they are not negative, they are multiplied by -1.<br>
+</li>
+<li>In 2024, 3 data points had latitudes of 32.xxxx. Details follow. These were all corrected by subtracting 2 in order to adjust to 30.xxxx. This correction is specific to the year 2024.
+<ol type="i">
+<li>21MSWQ_WQX-MS24-496, INDUSTRIAL SEAWAY. Lat given as 32.42299. Could not find other sites in the dataset with the INDUSTRIAL SEAWAY name but based on the following stations, believe correcting this to 30.xxxx is also appropriate.<br>
+</li>
+<li>21MSWQ_WQX-MS24-479, ST LOUIS BAY. Lat given as 32.35370. Other latitudes in the dataset for ST LOUIS BAY ranged from 30.31xxx to 30.37xxx, so correcting to 30.xxxx is appropriate.<br>
+</li>
+<li>21MSWQ_WQX-MS24-477, MISSISSIPPI SOUND. Lat given as 32.32958. Other latitudes in the dataset for MISSISSIPPI SOUND ranged from 30.15xxx - 30.42xxx, so correcting to 30.xxxx is appropriate.<br>
+</li>
+</ol></li>
+</ol></li>
+<li>Short names, suggested scales (log(x+1), sqrt, or continuous), and suggested color palettes were added to <code>ParamComprehensList.csv</code>, a table of parameter names and units that had previously been exported upond data processing. This should make it easier to automate mapping with custom parameter settings in a shiny app.<br>
+</li>
+<li>Groupings were applied for region/area. These need to be modified because splitting on names doesn’t work perfectly; but for now groupings occurred as follows:
+<ol type="a">
+<li>If the <code>LocationName</code> was <em>GULF OF MEXICO</em>, the station was assigned <em>Gulf</em>.<br>
+</li>
+<li>If the <code>LocationName</code> was <em>MISSISSIPPI SOUND</em>, the station was assigned <em>Sound</em>.<br>
+</li>
+<li>If the <code>LocationName</code> had the word <em>BAY</em> in it, the station was assigned to <em>Bays</em>.<br>
+</li>
+<li>All other stations were assigned to <em>Rivers/Lakes/Tributaries</em>.<br>
+</li>
+</ol></li>
+</ol>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="exploration-by-parameter" class="level1">
+<h1>Exploration by Parameter</h1>
+<section id="ammonia-nitrogen-dissolved" class="level2">
+<h2 class="anchored" data-anchor-id="ammonia-nitrogen-dissolved">Ammonia-nitrogen, Dissolved</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.243</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;">0.040</td>
+<td style="text-align: right;">0.067</td>
+<td style="text-align: right;">0.056</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.384</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.377</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">0.041</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.259</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.570</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.108</td>
+<td style="text-align: right;">0.098</td>
+<td style="text-align: right;">0.057</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.041</td>
+<td style="text-align: right;">0.455</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.068</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.081</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.445</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.058</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.404</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">1.520</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.047</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.145</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.049</td>
+<td style="text-align: right;">0.018</td>
+<td style="text-align: right;">0.102</td>
+<td style="text-align: right;">0.037</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.049</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.173</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">1.290</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.049</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.310</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.140</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ammonia-nitrogen-total" class="level2">
+<h2 class="anchored" data-anchor-id="ammonia-nitrogen-total">Ammonia-nitrogen, Total</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.059</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">0.047</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.059</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.101</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.84</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.046</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.052</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.061</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.075</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.58</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.084</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.158</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">1.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.59</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.083</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">1.11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.179</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.277</td>
+<td style="text-align: right;">0.170</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">1.59</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.046</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.043</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="chemical-oxygen-demand" class="level2">
+<h2 class="anchored" data-anchor-id="chemical-oxygen-demand">Chemical oxygen demand</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">377.5</td>
+<td style="text-align: right;">330</td>
+<td style="text-align: right;">236.99</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">940</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="chlorophyll-a-uncorrected-for-pheophytin" class="level2">
+<h2 class="anchored" data-anchor-id="chlorophyll-a-uncorrected-for-pheophytin">Chlorophyll a, uncorrected for pheophytin</h2>
+<p>Units for this parameter are <strong>ug/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">10.098</td>
+<td style="text-align: right;">9.40</td>
+<td style="text-align: right;">4.982</td>
+<td style="text-align: right;">6.700</td>
+<td style="text-align: right;">1.60</td>
+<td style="text-align: right;">21.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">8.401</td>
+<td style="text-align: right;">6.60</td>
+<td style="text-align: right;">9.302</td>
+<td style="text-align: right;">4.900</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">61.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">8.429</td>
+<td style="text-align: right;">7.40</td>
+<td style="text-align: right;">5.432</td>
+<td style="text-align: right;">5.900</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">29.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">7.427</td>
+<td style="text-align: right;">7.40</td>
+<td style="text-align: right;">3.178</td>
+<td style="text-align: right;">4.575</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">15.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">12.966</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">27.331</td>
+<td style="text-align: right;">8.875</td>
+<td style="text-align: right;">1.10</td>
+<td style="text-align: right;">154.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">12.453</td>
+<td style="text-align: right;">12.95</td>
+<td style="text-align: right;">6.884</td>
+<td style="text-align: right;">8.030</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">37.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">9.512</td>
+<td style="text-align: right;">9.62</td>
+<td style="text-align: right;">5.628</td>
+<td style="text-align: right;">7.275</td>
+<td style="text-align: right;">1.33</td>
+<td style="text-align: right;">22.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">12.500</td>
+<td style="text-align: right;">7.03</td>
+<td style="text-align: right;">17.979</td>
+<td style="text-align: right;">6.380</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">99.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">13.745</td>
+<td style="text-align: right;">11.30</td>
+<td style="text-align: right;">14.735</td>
+<td style="text-align: right;">13.045</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">78.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">23.342</td>
+<td style="text-align: right;">19.50</td>
+<td style="text-align: right;">15.004</td>
+<td style="text-align: right;">18.700</td>
+<td style="text-align: right;">1.27</td>
+<td style="text-align: right;">75.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">13.487</td>
+<td style="text-align: right;">8.72</td>
+<td style="text-align: right;">9.611</td>
+<td style="text-align: right;">14.523</td>
+<td style="text-align: right;">2.48</td>
+<td style="text-align: right;">31.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">14.537</td>
+<td style="text-align: right;">12.70</td>
+<td style="text-align: right;">8.625</td>
+<td style="text-align: right;">9.710</td>
+<td style="text-align: right;">3.17</td>
+<td style="text-align: right;">42.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">12.085</td>
+<td style="text-align: right;">7.35</td>
+<td style="text-align: right;">11.057</td>
+<td style="text-align: right;">10.895</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">35.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">16.628</td>
+<td style="text-align: right;">17.60</td>
+<td style="text-align: right;">10.241</td>
+<td style="text-align: right;">15.180</td>
+<td style="text-align: right;">4.45</td>
+<td style="text-align: right;">39.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">18.941</td>
+<td style="text-align: right;">14.80</td>
+<td style="text-align: right;">13.659</td>
+<td style="text-align: right;">16.607</td>
+<td style="text-align: right;">1.89</td>
+<td style="text-align: right;">57.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="depth-secchi-disk-depth" class="level2">
+<h2 class="anchored" data-anchor-id="depth-secchi-disk-depth">Depth, Secchi disk depth</h2>
+<p>Units for this parameter are <strong>m</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1.378</td>
+<td style="text-align: right;">1.050</td>
+<td style="text-align: right;">0.912</td>
+<td style="text-align: right;">0.475</td>
+<td style="text-align: right;">0.650</td>
+<td style="text-align: right;">4.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">1.367</td>
+<td style="text-align: right;">1.125</td>
+<td style="text-align: right;">0.746</td>
+<td style="text-align: right;">0.638</td>
+<td style="text-align: right;">0.450</td>
+<td style="text-align: right;">3.300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">1.173</td>
+<td style="text-align: right;">1.200</td>
+<td style="text-align: right;">0.537</td>
+<td style="text-align: right;">0.512</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">3.250</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.867</td>
+<td style="text-align: right;">0.800</td>
+<td style="text-align: right;">0.331</td>
+<td style="text-align: right;">0.337</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">1.800</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">1.265</td>
+<td style="text-align: right;">0.625</td>
+<td style="text-align: right;">1.451</td>
+<td style="text-align: right;">0.716</td>
+<td style="text-align: right;">0.152</td>
+<td style="text-align: right;">5.486</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0.941</td>
+<td style="text-align: right;">0.800</td>
+<td style="text-align: right;">0.661</td>
+<td style="text-align: right;">0.350</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">4.500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">1.280</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.931</td>
+<td style="text-align: right;">0.550</td>
+<td style="text-align: right;">0.250</td>
+<td style="text-align: right;">5.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">0.658</td>
+<td style="text-align: right;">0.600</td>
+<td style="text-align: right;">0.347</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">1.500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">1.118</td>
+<td style="text-align: right;">0.800</td>
+<td style="text-align: right;">1.460</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">8.900</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">0.621</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.276</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">1.600</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">1.016</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.451</td>
+<td style="text-align: right;">0.650</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">2.100</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">1.024</td>
+<td style="text-align: right;">0.900</td>
+<td style="text-align: right;">0.546</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">3.100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">1.184</td>
+<td style="text-align: right;">0.750</td>
+<td style="text-align: right;">1.458</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">6.300</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">1.209</td>
+<td style="text-align: right;">0.800</td>
+<td style="text-align: right;">1.058</td>
+<td style="text-align: right;">0.700</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">5.400</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">1.030</td>
+<td style="text-align: right;">0.900</td>
+<td style="text-align: right;">0.644</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">3.700</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="depth-bottom" class="level2">
+<h2 class="anchored" data-anchor-id="depth-bottom">Depth, bottom</h2>
+<p>Units for this parameter are <strong>ft</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-72-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-73-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">14.714</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">8.440</td>
+<td style="text-align: right;">11.500</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">27.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">12.909</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">8.960</td>
+<td style="text-align: right;">9.000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">38.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">13.341</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">13.523</td>
+<td style="text-align: right;">8.125</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">65.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">14.328</td>
+<td style="text-align: right;">11.0</td>
+<td style="text-align: right;">12.272</td>
+<td style="text-align: right;">10.500</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">50.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">11.091</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">7.397</td>
+<td style="text-align: right;">9.000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">37.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">12.875</td>
+<td style="text-align: right;">11.5</td>
+<td style="text-align: right;">8.654</td>
+<td style="text-align: right;">10.250</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">35.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-76-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-77-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dissolved-oxygen-do" class="level2">
+<h2 class="anchored" data-anchor-id="dissolved-oxygen-do">Dissolved oxygen (DO)</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-85-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-86-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-87-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">5.235</td>
+<td style="text-align: right;">5.300</td>
+<td style="text-align: right;">2.399</td>
+<td style="text-align: right;">3.640</td>
+<td style="text-align: right;">1.37</td>
+<td style="text-align: right;">10.48</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">6.152</td>
+<td style="text-align: right;">6.190</td>
+<td style="text-align: right;">2.051</td>
+<td style="text-align: right;">2.133</td>
+<td style="text-align: right;">1.14</td>
+<td style="text-align: right;">11.12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">5.927</td>
+<td style="text-align: right;">6.320</td>
+<td style="text-align: right;">1.549</td>
+<td style="text-align: right;">1.810</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">8.57</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">116</td>
+<td style="text-align: right;">6.231</td>
+<td style="text-align: right;">6.785</td>
+<td style="text-align: right;">1.657</td>
+<td style="text-align: right;">1.420</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">7.84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">423</td>
+<td style="text-align: right;">6.089</td>
+<td style="text-align: right;">6.510</td>
+<td style="text-align: right;">1.874</td>
+<td style="text-align: right;">1.360</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">11.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">414</td>
+<td style="text-align: right;">5.596</td>
+<td style="text-align: right;">6.300</td>
+<td style="text-align: right;">2.219</td>
+<td style="text-align: right;">2.900</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">10.13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">399</td>
+<td style="text-align: right;">6.056</td>
+<td style="text-align: right;">6.440</td>
+<td style="text-align: right;">1.676</td>
+<td style="text-align: right;">1.830</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">10.98</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">5.578</td>
+<td style="text-align: right;">6.175</td>
+<td style="text-align: right;">2.359</td>
+<td style="text-align: right;">3.010</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">9.07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">5.718</td>
+<td style="text-align: right;">6.200</td>
+<td style="text-align: right;">1.723</td>
+<td style="text-align: right;">2.200</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">9.37</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">5.596</td>
+<td style="text-align: right;">6.015</td>
+<td style="text-align: right;">2.569</td>
+<td style="text-align: right;">2.728</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">21.67</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">426</td>
+<td style="text-align: right;">6.725</td>
+<td style="text-align: right;">6.660</td>
+<td style="text-align: right;">1.304</td>
+<td style="text-align: right;">1.775</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: right;">9.70</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">5.517</td>
+<td style="text-align: right;">5.710</td>
+<td style="text-align: right;">1.666</td>
+<td style="text-align: right;">2.040</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">8.46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">5.539</td>
+<td style="text-align: right;">5.480</td>
+<td style="text-align: right;">1.519</td>
+<td style="text-align: right;">2.215</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">10.55</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">5.917</td>
+<td style="text-align: right;">5.860</td>
+<td style="text-align: right;">0.940</td>
+<td style="text-align: right;">1.200</td>
+<td style="text-align: right;">2.94</td>
+<td style="text-align: right;">8.11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">473</td>
+<td style="text-align: right;">6.170</td>
+<td style="text-align: right;">6.360</td>
+<td style="text-align: right;">1.825</td>
+<td style="text-align: right;">2.040</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">11.32</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-89-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-90-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dissolved-oxygen-saturation" class="level2">
+<h2 class="anchored" data-anchor-id="dissolved-oxygen-saturation">Dissolved oxygen saturation</h2>
+<p>Units for this parameter are <strong>%</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-4" role="tab" aria-controls="tabset-8-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-98-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-99-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-100-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">399</td>
+<td style="text-align: right;">89.142</td>
+<td style="text-align: right;">95.50</td>
+<td style="text-align: right;">26.118</td>
+<td style="text-align: right;">35.500</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">163.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">77.825</td>
+<td style="text-align: right;">76.90</td>
+<td style="text-align: right;">34.845</td>
+<td style="text-align: right;">48.675</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">170.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">85.379</td>
+<td style="text-align: right;">89.70</td>
+<td style="text-align: right;">25.948</td>
+<td style="text-align: right;">37.150</td>
+<td style="text-align: right;">12.3</td>
+<td style="text-align: right;">134.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">81.998</td>
+<td style="text-align: right;">87.60</td>
+<td style="text-align: right;">39.099</td>
+<td style="text-align: right;">40.075</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">339.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: right;">93.968</td>
+<td style="text-align: right;">95.20</td>
+<td style="text-align: right;">19.389</td>
+<td style="text-align: right;">27.625</td>
+<td style="text-align: right;">16.5</td>
+<td style="text-align: right;">140.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">77.114</td>
+<td style="text-align: right;">80.60</td>
+<td style="text-align: right;">23.937</td>
+<td style="text-align: right;">27.700</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">121.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">76.660</td>
+<td style="text-align: right;">77.55</td>
+<td style="text-align: right;">23.690</td>
+<td style="text-align: right;">41.230</td>
+<td style="text-align: right;">19.0</td>
+<td style="text-align: right;">152.74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">89.708</td>
+<td style="text-align: right;">88.30</td>
+<td style="text-align: right;">15.260</td>
+<td style="text-align: right;">19.450</td>
+<td style="text-align: right;">42.0</td>
+<td style="text-align: right;">125.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">475</td>
+<td style="text-align: right;">90.240</td>
+<td style="text-align: right;">95.50</td>
+<td style="text-align: right;">27.674</td>
+<td style="text-align: right;">36.250</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">157.10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-8-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-102-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-103-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="kjeldahl-nitrogen-total" class="level2">
+<h2 class="anchored" data-anchor-id="kjeldahl-nitrogen-total">Kjeldahl nitrogen, Total</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-4" role="tab" aria-controls="tabset-9-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-111-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-112-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-113-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.334</td>
+<td style="text-align: right;">0.340</td>
+<td style="text-align: right;">0.135</td>
+<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.452</td>
+<td style="text-align: right;">0.420</td>
+<td style="text-align: right;">0.170</td>
+<td style="text-align: right;">0.190</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.94</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">0.434</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">0.191</td>
+<td style="text-align: right;">0.220</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.98</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.503</td>
+<td style="text-align: right;">0.510</td>
+<td style="text-align: right;">0.126</td>
+<td style="text-align: right;">0.175</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.542</td>
+<td style="text-align: right;">0.525</td>
+<td style="text-align: right;">0.219</td>
+<td style="text-align: right;">0.202</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">1.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">1.006</td>
+<td style="text-align: right;">1.025</td>
+<td style="text-align: right;">0.293</td>
+<td style="text-align: right;">0.410</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">1.62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.530</td>
+<td style="text-align: right;">0.459</td>
+<td style="text-align: right;">0.315</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">3.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.687</td>
+<td style="text-align: right;">0.660</td>
+<td style="text-align: right;">0.294</td>
+<td style="text-align: right;">0.223</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">2.06</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.439</td>
+<td style="text-align: right;">0.380</td>
+<td style="text-align: right;">0.251</td>
+<td style="text-align: right;">0.220</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">1.54</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.305</td>
+<td style="text-align: right;">0.240</td>
+<td style="text-align: right;">0.261</td>
+<td style="text-align: right;">0.270</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">1.37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.546</td>
+<td style="text-align: right;">0.435</td>
+<td style="text-align: right;">0.394</td>
+<td style="text-align: right;">0.475</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">2.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.416</td>
+<td style="text-align: right;">0.380</td>
+<td style="text-align: right;">0.178</td>
+<td style="text-align: right;">0.110</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">1.30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.564</td>
+<td style="text-align: right;">0.520</td>
+<td style="text-align: right;">0.255</td>
+<td style="text-align: right;">0.245</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">1.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">1.545</td>
+<td style="text-align: right;">1.715</td>
+<td style="text-align: right;">0.867</td>
+<td style="text-align: right;">1.743</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">2.71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.559</td>
+<td style="text-align: right;">0.515</td>
+<td style="text-align: right;">0.187</td>
+<td style="text-align: right;">0.292</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">1.06</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-9-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-115-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-116-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nitrate-nitrite-total" class="level2">
+<h2 class="anchored" data-anchor-id="nitrate-nitrite-total">Nitrate + Nitrite, Total</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-4" role="tab" aria-controls="tabset-10-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-124-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-125-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-126-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.027</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.029</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.022</td>
+<td style="text-align: right;">0.043</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.036</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.23</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.040</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.06</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.045</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.184</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">1.37</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.06</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.036</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-10-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-128-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-129-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nitrate-dissolved" class="level2">
+<h2 class="anchored" data-anchor-id="nitrate-dissolved">Nitrate, Dissolved</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-3" role="tab" aria-controls="tabset-11-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-4" role="tab" aria-controls="tabset-11-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-137-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-138-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-139-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-11-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.022</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.115</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.180</td>
+<td style="text-align: right;">0.180</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.180</td>
+<td style="text-align: right;">0.180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.177</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">0.039</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.165</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.074</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.102</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.055</td>
+<td style="text-align: right;">0.155</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.018</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.031</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.222</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.031</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.082</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.032</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.067</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.130</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.049</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.193</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.030</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.288</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-11-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-141-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-142-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nitrite-dissolved" class="level2">
+<h2 class="anchored" data-anchor-id="nitrite-dissolved">Nitrite, Dissolved</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-3" role="tab" aria-controls="tabset-12-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-4" role="tab" aria-controls="tabset-12-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-150-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-151-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-152-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-12-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.110</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.064</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.051</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.039</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.014</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.027</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.121</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.139</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.047</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.059</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.053</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">0.022</td>
+<td style="text-align: right;">0.053</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.299</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.046</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.081</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-12-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-154-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-155-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="orthophosphate-dissolved" class="level2">
+<h2 class="anchored" data-anchor-id="orthophosphate-dissolved">Orthophosphate, Dissolved</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-3" role="tab" aria-controls="tabset-13-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-4" role="tab" aria-controls="tabset-13-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-163-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-164-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-165-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-13-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">0.094</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.018</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.049</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.029</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.074</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.078</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.083</td>
+<td style="text-align: right;">0.027</td>
+<td style="text-align: right;">0.341</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">2.950</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.129</td>
+<td style="text-align: right;">0.055</td>
+<td style="text-align: right;">0.432</td>
+<td style="text-align: right;">0.057</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">3.270</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.090</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.417</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">2.970</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.220</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">1.198</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">8.610</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.067</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">2.500</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.024</td>
+<td style="text-align: right;">0.234</td>
+<td style="text-align: right;">0.018</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">1.270</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">0.043</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.168</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">1.142</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">8.400</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.220</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">1.261</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">9.330</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">0.027</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.328</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.076</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">0.242</td>
+<td style="text-align: right;">0.036</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">1.700</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-13-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-167-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-168-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="phosphorus-total" class="level2">
+<h2 class="anchored" data-anchor-id="phosphorus-total">Phosphorus, Total</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-3" role="tab" aria-controls="tabset-14-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-4" role="tab" aria-controls="tabset-14-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-176-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-177-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-178-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-14-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">0.081</td>
+<td style="text-align: right;">0.080</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.13</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.040</td>
+<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">0.022</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">0.063</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0.128</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">0.366</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">3.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.227</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.740</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">5.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.158</td>
+<td style="text-align: right;">0.080</td>
+<td style="text-align: right;">0.339</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">2.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">0.404</td>
+<td style="text-align: right;">0.140</td>
+<td style="text-align: right;">1.217</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">7.51</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.184</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.401</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">2.93</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.164</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.326</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">1.79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">0.067</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.093</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.197</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.991</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">7.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">0.161</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.636</td>
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">4.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.113</td>
+<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">0.062</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.137</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">0.235</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">1.55</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-14-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-180-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-181-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="salinity" class="level2">
+<h2 class="anchored" data-anchor-id="salinity">Salinity</h2>
+<p>Units for this parameter are <strong>ppt</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-3" role="tab" aria-controls="tabset-15-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-4" role="tab" aria-controls="tabset-15-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-189-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-190-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-191-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-15-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">19.348</td>
+<td style="text-align: right;">20.300</td>
+<td style="text-align: right;">8.676</td>
+<td style="text-align: right;">13.198</td>
+<td style="text-align: right;">2.89</td>
+<td style="text-align: right;">34.50</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">19.950</td>
+<td style="text-align: right;">21.950</td>
+<td style="text-align: right;">7.209</td>
+<td style="text-align: right;">10.125</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">29.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">21.589</td>
+<td style="text-align: right;">24.610</td>
+<td style="text-align: right;">8.103</td>
+<td style="text-align: right;">9.360</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">32.93</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">12.455</td>
+<td style="text-align: right;">16.305</td>
+<td style="text-align: right;">8.647</td>
+<td style="text-align: right;">17.352</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">29.73</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">423</td>
+<td style="text-align: right;">24.039</td>
+<td style="text-align: right;">27.820</td>
+<td style="text-align: right;">9.363</td>
+<td style="text-align: right;">13.860</td>
+<td style="text-align: right;">2.40</td>
+<td style="text-align: right;">35.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">414</td>
+<td style="text-align: right;">23.984</td>
+<td style="text-align: right;">24.535</td>
+<td style="text-align: right;">7.802</td>
+<td style="text-align: right;">11.808</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">38.03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">399</td>
+<td style="text-align: right;">19.981</td>
+<td style="text-align: right;">24.820</td>
+<td style="text-align: right;">10.088</td>
+<td style="text-align: right;">15.595</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">32.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">14.453</td>
+<td style="text-align: right;">18.625</td>
+<td style="text-align: right;">10.403</td>
+<td style="text-align: right;">20.180</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">33.49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">21.228</td>
+<td style="text-align: right;">22.310</td>
+<td style="text-align: right;">8.177</td>
+<td style="text-align: right;">13.083</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">35.53</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">18.502</td>
+<td style="text-align: right;">19.330</td>
+<td style="text-align: right;">7.792</td>
+<td style="text-align: right;">15.495</td>
+<td style="text-align: right;">3.60</td>
+<td style="text-align: right;">36.83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: right;">18.361</td>
+<td style="text-align: right;">20.490</td>
+<td style="text-align: right;">8.983</td>
+<td style="text-align: right;">15.660</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">36.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">13.712</td>
+<td style="text-align: right;">13.040</td>
+<td style="text-align: right;">8.049</td>
+<td style="text-align: right;">10.470</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">30.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">11.841</td>
+<td style="text-align: right;">8.410</td>
+<td style="text-align: right;">11.537</td>
+<td style="text-align: right;">20.120</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">32.94</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">27.274</td>
+<td style="text-align: right;">25.750</td>
+<td style="text-align: right;">5.427</td>
+<td style="text-align: right;">9.310</td>
+<td style="text-align: right;">14.01</td>
+<td style="text-align: right;">35.62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">480</td>
+<td style="text-align: right;">21.043</td>
+<td style="text-align: right;">22.905</td>
+<td style="text-align: right;">9.333</td>
+<td style="text-align: right;">15.595</td>
+<td style="text-align: right;">2.34</td>
+<td style="text-align: right;">34.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-15-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-193-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-194-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="specific-conductance" class="level2">
+<h2 class="anchored" data-anchor-id="specific-conductance">Specific conductance</h2>
+<p>Units for this parameter are <strong>umho/cm</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-3" role="tab" aria-controls="tabset-16-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-4" role="tab" aria-controls="tabset-16-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-16-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-202-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-16-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-203-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-204-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-16-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">399</td>
+<td style="text-align: right;">31423.63</td>
+<td style="text-align: right;">38971.0</td>
+<td style="text-align: right;">15174.657</td>
+<td style="text-align: right;">22535.50</td>
+<td style="text-align: right;">2694.00</td>
+<td style="text-align: right;">59008</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">23072.45</td>
+<td style="text-align: right;">29851.5</td>
+<td style="text-align: right;">16093.063</td>
+<td style="text-align: right;">31067.00</td>
+<td style="text-align: right;">61.00</td>
+<td style="text-align: right;">50935</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">33852.64</td>
+<td style="text-align: right;">35580.5</td>
+<td style="text-align: right;">12124.001</td>
+<td style="text-align: right;">18946.75</td>
+<td style="text-align: right;">765.00</td>
+<td style="text-align: right;">57553</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">380</td>
+<td style="text-align: right;">29500.60</td>
+<td style="text-align: right;">31077.0</td>
+<td style="text-align: right;">11666.567</td>
+<td style="text-align: right;">23178.25</td>
+<td style="text-align: right;">1944.00</td>
+<td style="text-align: right;">51803</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: right;">29279.54</td>
+<td style="text-align: right;">32950.5</td>
+<td style="text-align: right;">13576.488</td>
+<td style="text-align: right;">23169.75</td>
+<td style="text-align: right;">1844.00</td>
+<td style="text-align: right;">55019</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">22383.34</td>
+<td style="text-align: right;">21860.0</td>
+<td style="text-align: right;">12423.889</td>
+<td style="text-align: right;">16005.00</td>
+<td style="text-align: right;">191.00</td>
+<td style="text-align: right;">46962</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">18682.61</td>
+<td style="text-align: right;">14202.0</td>
+<td style="text-align: right;">17462.425</td>
+<td style="text-align: right;">31279.50</td>
+<td style="text-align: right;">70.84</td>
+<td style="text-align: right;">49431</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">42065.99</td>
+<td style="text-align: right;">40232.0</td>
+<td style="text-align: right;">8104.267</td>
+<td style="text-align: right;">13231.50</td>
+<td style="text-align: right;">37.39</td>
+<td style="text-align: right;">53774</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">479</td>
+<td style="text-align: right;">33272.83</td>
+<td style="text-align: right;">36526.0</td>
+<td style="text-align: right;">13888.721</td>
+<td style="text-align: right;">22879.00</td>
+<td style="text-align: right;">4296.00</td>
+<td style="text-align: right;">74310</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-16-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-206-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-207-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="temperature-water" class="level2">
+<h2 class="anchored" data-anchor-id="temperature-water">Temperature, water</h2>
+<p>Units for this parameter are <strong>deg C</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-17-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-1" role="tab" aria-controls="tabset-17-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-2" role="tab" aria-controls="tabset-17-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-3" role="tab" aria-controls="tabset-17-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-4" role="tab" aria-controls="tabset-17-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-17-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-17-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-215-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-17-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-216-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-217-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-17-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">30.548</td>
+<td style="text-align: right;">30.700</td>
+<td style="text-align: right;">1.613</td>
+<td style="text-align: right;">1.345</td>
+<td style="text-align: right;">27.00</td>
+<td style="text-align: right;">33.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">27.043</td>
+<td style="text-align: right;">27.055</td>
+<td style="text-align: right;">0.640</td>
+<td style="text-align: right;">0.723</td>
+<td style="text-align: right;">24.90</td>
+<td style="text-align: right;">28.85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">29.906</td>
+<td style="text-align: right;">29.940</td>
+<td style="text-align: right;">0.755</td>
+<td style="text-align: right;">0.720</td>
+<td style="text-align: right;">27.11</td>
+<td style="text-align: right;">31.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">364</td>
+<td style="text-align: right;">28.601</td>
+<td style="text-align: right;">28.645</td>
+<td style="text-align: right;">1.168</td>
+<td style="text-align: right;">2.020</td>
+<td style="text-align: right;">25.30</td>
+<td style="text-align: right;">30.93</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">424</td>
+<td style="text-align: right;">28.046</td>
+<td style="text-align: right;">28.205</td>
+<td style="text-align: right;">1.782</td>
+<td style="text-align: right;">2.390</td>
+<td style="text-align: right;">23.61</td>
+<td style="text-align: right;">32.37</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">414</td>
+<td style="text-align: right;">30.561</td>
+<td style="text-align: right;">30.870</td>
+<td style="text-align: right;">1.527</td>
+<td style="text-align: right;">0.938</td>
+<td style="text-align: right;">25.03</td>
+<td style="text-align: right;">33.54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">399</td>
+<td style="text-align: right;">29.988</td>
+<td style="text-align: right;">29.670</td>
+<td style="text-align: right;">1.085</td>
+<td style="text-align: right;">1.670</td>
+<td style="text-align: right;">27.96</td>
+<td style="text-align: right;">33.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">28.924</td>
+<td style="text-align: right;">29.325</td>
+<td style="text-align: right;">1.424</td>
+<td style="text-align: right;">1.258</td>
+<td style="text-align: right;">25.06</td>
+<td style="text-align: right;">31.89</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">29.934</td>
+<td style="text-align: right;">30.000</td>
+<td style="text-align: right;">1.031</td>
+<td style="text-align: right;">1.200</td>
+<td style="text-align: right;">26.80</td>
+<td style="text-align: right;">32.70</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">30.000</td>
+<td style="text-align: right;">30.000</td>
+<td style="text-align: right;">0.841</td>
+<td style="text-align: right;">1.300</td>
+<td style="text-align: right;">27.90</td>
+<td style="text-align: right;">32.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: right;">27.444</td>
+<td style="text-align: right;">28.800</td>
+<td style="text-align: right;">2.491</td>
+<td style="text-align: right;">4.900</td>
+<td style="text-align: right;">22.65</td>
+<td style="text-align: right;">32.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">29.403</td>
+<td style="text-align: right;">29.700</td>
+<td style="text-align: right;">1.123</td>
+<td style="text-align: right;">1.700</td>
+<td style="text-align: right;">25.60</td>
+<td style="text-align: right;">31.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">28.549</td>
+<td style="text-align: right;">28.900</td>
+<td style="text-align: right;">1.232</td>
+<td style="text-align: right;">2.045</td>
+<td style="text-align: right;">24.20</td>
+<td style="text-align: right;">32.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">29.631</td>
+<td style="text-align: right;">29.500</td>
+<td style="text-align: right;">1.126</td>
+<td style="text-align: right;">1.670</td>
+<td style="text-align: right;">27.29</td>
+<td style="text-align: right;">32.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">480</td>
+<td style="text-align: right;">29.628</td>
+<td style="text-align: right;">29.875</td>
+<td style="text-align: right;">2.038</td>
+<td style="text-align: right;">2.560</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">32.49</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-17-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-219-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-220-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="total-suspended-solids-suspended" class="level2">
+<h2 class="anchored" data-anchor-id="total-suspended-solids-suspended">Total suspended solids, Suspended</h2>
+<p>Units for this parameter are <strong>mg/L</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-18-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-1" role="tab" aria-controls="tabset-18-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-2" role="tab" aria-controls="tabset-18-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-3" role="tab" aria-controls="tabset-18-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-4" role="tab" aria-controls="tabset-18-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-18-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-18-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-228-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-18-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-18-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-229-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-230-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-18-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-18-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">24.868</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">12.396</td>
+<td style="text-align: right;">18.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">19.802</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">9.544</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">23.388</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">11.026</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">23.244</td>
+<td style="text-align: right;">19.5</td>
+<td style="text-align: right;">16.365</td>
+<td style="text-align: right;">15.75</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">25.212</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">16.270</td>
+<td style="text-align: right;">11.50</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">110</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">33.580</td>
+<td style="text-align: right;">30.0</td>
+<td style="text-align: right;">17.070</td>
+<td style="text-align: right;">15.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">111</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">31.170</td>
+<td style="text-align: right;">31.0</td>
+<td style="text-align: right;">19.139</td>
+<td style="text-align: right;">24.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">92</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">21.614</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">8.031</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">22.105</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">12.599</td>
+<td style="text-align: right;">12.00</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">31.000</td>
+<td style="text-align: right;">26.0</td>
+<td style="text-align: right;">19.166</td>
+<td style="text-align: right;">16.00</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">98</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">14.561</td>
+<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">16.099</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">124</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">31.889</td>
+<td style="text-align: right;">26.0</td>
+<td style="text-align: right;">20.253</td>
+<td style="text-align: right;">31.75</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">20.200</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">13.429</td>
+<td style="text-align: right;">16.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">21.529</td>
+<td style="text-align: right;">19.0</td>
+<td style="text-align: right;">8.771</td>
+<td style="text-align: right;">10.50</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">40.696</td>
+<td style="text-align: right;">24.5</td>
+<td style="text-align: right;">74.459</td>
+<td style="text-align: right;">19.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">480</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-18-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-18-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-232-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-233-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="turbidity" class="level2">
+<h2 class="anchored" data-anchor-id="turbidity">Turbidity</h2>
+<p>Units for this parameter are <strong>NTU</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-19-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-1" role="tab" aria-controls="tabset-19-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-2" role="tab" aria-controls="tabset-19-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-3" role="tab" aria-controls="tabset-19-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-4" role="tab" aria-controls="tabset-19-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-19-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-19-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-241-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-19-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-19-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-242-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-243-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-19-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-19-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">11.793</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">9.307</td>
+<td style="text-align: right;">11.000</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">42.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">9.362</td>
+<td style="text-align: right;">7.50</td>
+<td style="text-align: right;">5.931</td>
+<td style="text-align: right;">6.500</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">25.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">9.154</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">4.465</td>
+<td style="text-align: right;">5.000</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">22.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">8.621</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: right;">4.572</td>
+<td style="text-align: right;">4.000</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">24.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">7.265</td>
+<td style="text-align: right;">7.25</td>
+<td style="text-align: right;">3.873</td>
+<td style="text-align: right;">4.750</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">20.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">11.313</td>
+<td style="text-align: right;">8.25</td>
+<td style="text-align: right;">10.253</td>
+<td style="text-align: right;">5.340</td>
+<td style="text-align: right;">1.58</td>
+<td style="text-align: right;">50.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">9.239</td>
+<td style="text-align: right;">8.33</td>
+<td style="text-align: right;">4.316</td>
+<td style="text-align: right;">5.460</td>
+<td style="text-align: right;">3.40</td>
+<td style="text-align: right;">20.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">11.440</td>
+<td style="text-align: right;">7.52</td>
+<td style="text-align: right;">16.230</td>
+<td style="text-align: right;">4.392</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">108.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-19-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-19-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-245-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-246-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ph" class="level2">
+<h2 class="anchored" data-anchor-id="ph">pH</h2>
+<p>Units for this parameter are ****</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-20-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-1" role="tab" aria-controls="tabset-20-1" aria-selected="true" href="">Faceted Map</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-20-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-2" role="tab" aria-controls="tabset-20-2" aria-selected="false" href="">Time Series</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-20-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-3" role="tab" aria-controls="tabset-20-3" aria-selected="false" href="">Summary Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-20-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-4" role="tab" aria-controls="tabset-20-4" aria-selected="false" href="">Histograms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-20-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-20-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-254-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-20-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-20-2-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-255-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-256-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-20-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-20-3-tab">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">IQR</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">7.756</td>
+<td style="text-align: right;">7.870</td>
+<td style="text-align: right;">0.549</td>
+<td style="text-align: right;">0.670</td>
+<td style="text-align: right;">6.58</td>
+<td style="text-align: right;">8.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">7.796</td>
+<td style="text-align: right;">7.920</td>
+<td style="text-align: right;">0.403</td>
+<td style="text-align: right;">0.393</td>
+<td style="text-align: right;">6.54</td>
+<td style="text-align: right;">8.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">7.814</td>
+<td style="text-align: right;">8.050</td>
+<td style="text-align: right;">0.554</td>
+<td style="text-align: right;">0.250</td>
+<td style="text-align: right;">5.76</td>
+<td style="text-align: right;">8.22</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">364</td>
+<td style="text-align: right;">7.773</td>
+<td style="text-align: right;">7.920</td>
+<td style="text-align: right;">0.522</td>
+<td style="text-align: right;">0.510</td>
+<td style="text-align: right;">6.33</td>
+<td style="text-align: right;">8.46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">424</td>
+<td style="text-align: right;">7.709</td>
+<td style="text-align: right;">7.850</td>
+<td style="text-align: right;">0.331</td>
+<td style="text-align: right;">0.410</td>
+<td style="text-align: right;">6.62</td>
+<td style="text-align: right;">8.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">414</td>
+<td style="text-align: right;">7.718</td>
+<td style="text-align: right;">7.850</td>
+<td style="text-align: right;">0.395</td>
+<td style="text-align: right;">0.340</td>
+<td style="text-align: right;">6.46</td>
+<td style="text-align: right;">8.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">399</td>
+<td style="text-align: right;">7.361</td>
+<td style="text-align: right;">7.540</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.545</td>
+<td style="text-align: right;">5.88</td>
+<td style="text-align: right;">8.08</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">7.066</td>
+<td style="text-align: right;">7.315</td>
+<td style="text-align: right;">0.944</td>
+<td style="text-align: right;">1.305</td>
+<td style="text-align: right;">4.92</td>
+<td style="text-align: right;">8.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">7.635</td>
+<td style="text-align: right;">7.810</td>
+<td style="text-align: right;">0.422</td>
+<td style="text-align: right;">0.458</td>
+<td style="text-align: right;">5.86</td>
+<td style="text-align: right;">8.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">7.704</td>
+<td style="text-align: right;">7.800</td>
+<td style="text-align: right;">0.406</td>
+<td style="text-align: right;">0.650</td>
+<td style="text-align: right;">6.48</td>
+<td style="text-align: right;">8.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">427</td>
+<td style="text-align: right;">7.659</td>
+<td style="text-align: right;">7.910</td>
+<td style="text-align: right;">0.501</td>
+<td style="text-align: right;">0.715</td>
+<td style="text-align: right;">6.51</td>
+<td style="text-align: right;">8.27</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">7.416</td>
+<td style="text-align: right;">7.510</td>
+<td style="text-align: right;">0.602</td>
+<td style="text-align: right;">0.900</td>
+<td style="text-align: right;">5.91</td>
+<td style="text-align: right;">8.31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">7.070</td>
+<td style="text-align: right;">7.200</td>
+<td style="text-align: right;">0.896</td>
+<td style="text-align: right;">1.820</td>
+<td style="text-align: right;">5.19</td>
+<td style="text-align: right;">8.62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">7.480</td>
+<td style="text-align: right;">7.570</td>
+<td style="text-align: right;">0.295</td>
+<td style="text-align: right;">0.360</td>
+<td style="text-align: right;">6.43</td>
+<td style="text-align: right;">7.94</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2024</td>
+<td style="text-align: right;">479</td>
+<td style="text-align: right;">7.515</td>
+<td style="text-align: right;">7.750</td>
+<td style="text-align: right;">0.517</td>
+<td style="text-align: right;">0.710</td>
+<td style="text-align: right;">6.13</td>
+<td style="text-align: right;">8.21</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-20-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-20-4-tab">
+<p><strong>There are two graphs in this tab; be sure to scroll!</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-258-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MCAexploration_files/figure-html/unnamed-chunk-259-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cmep-ms\.github\.io\/msep_MCAapp");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CMEP-MS/msep_MCAapp/blob/main/MCAexploration.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
