@@ -1,0 +1,14 @@
+project:
+    type: website
+    output-dir: docs
+website:
+    title: "MCA"
+    site-url: https://cmep-ms.github.io/msep_MCAapp
+    repo-url: https://github.com/CMEP-MS/msep_MCAapp
+    repo-actions: [source]
+html:
+    toc: true
+    code-links:
+      text: Source Repository
+      icon: github
+      href: https://github.com/CMEP-MS/msep_MCAapp

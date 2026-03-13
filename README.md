@@ -1,5 +1,11 @@
 This repository contains code for a Shiny app to explore MDEQ Mississippi Coastal Assessment data, downloaded from the Water Quality Portal via `{mseptools}`.
 
+Data for all years of the MCA were downloaded from the [Water Quality Portal](https://www.waterqualitydata.us/) on 3/11/2026. The query url that yielded the file is:
+```
+https://www.waterqualitydata.us/#statecode=US%3A28&organization=21MSWQ_WQX&sampleMedia=Water&project=MCA10&project=MCA11&project=MCA12&project=MCA13&project=MCA14&project=MCA15&project=MCA16&project=MCA17&project=MCA18&project=MCA19&project=MCA20&project=MCA21&project=MCA22&project=MCA23&project=MCA24&startDateLo=01-01-2000&startDateHi=12-31-2025&mimeType=csv&dataProfile=resultPhysChem&providers=NWIS&providers=STORET"
+```
+
+
 ## Steps followed after download
 
 1.  Parameter names in the `CharacteristicName` were combined with associated details from the `ResultSampleFractionText` column, into a single `Parameter` column, to differentiate total and dissolved forms of nutrients.

@@ -1,0 +1,304 @@
+---
+title: "Mississippi Coastal Assessment Exploration, by Parameter"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-expand: true
+    code-fold: true
+    self-contained: false
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: true
+---
+
+## About the data  
+
+
+Data for all years of [Mississippi Department of Environmental Quality's](https://www.mdeq.ms.gov/) annual Mississippi Coastal Assessment (MCA) were downloaded from the [Water Quality Portal](https://www.waterqualitydata.us/) on 3/11/2026. Detail on the query and data processing steps are below.   
+
+::: {.callout-note collapse="true"}
+## Click to expand  
+
+The query url that yielded the file is:
+```
+https://www.waterqualitydata.us/#statecode=US%3A28&organization=21MSWQ_WQX&sampleMedia=Water&project=MCA10&project=MCA11&project=MCA12&project=MCA13&project=MCA14&project=MCA15&project=MCA16&project=MCA17&project=MCA18&project=MCA19&project=MCA20&project=MCA21&project=MCA22&project=MCA23&project=MCA24&startDateLo=01-01-2000&startDateHi=12-31-2025&mimeType=csv&dataProfile=resultPhysChem&providers=NWIS&providers=STORET"
+```
+
+
+### Steps followed after download
+
+1.  Parameter names in the `CharacteristicName` were combined with associated details from the `ResultSampleFractionText` column, into a single `Parameter` column, to differentiate total and dissolved forms of nutrients.
+2.  Verified that parameter names were consistent; one parameter is represented by one name throughout.  
+    a.  Many rows had a `CharacteristicName` of "Inorganic nitrogen (nitrate and nitrite) \***retired\***use Nitrate + Nitrite, Total". These were converted to "Nitrate + Nitrite, Total".  
+3.  Verified that parameter names had consistent units of reporting.  
+    a.  Secchi disk depth was reported in "ft" for 32 sampling events, and in "m" for the remaining 441. This appeared to be limited to 2014 sampling. These values were converted to m to be consistent with other values.  
+    b.  Many rows did not have reported units. A separate data frame was made to track units for each parameter.  
+4.  When results were below detection (denoted in the original `ResultDetectionConditionText` column as "Present Below Quantification Limit"), the MDL provided in the `DetectionQuantitationLimitMeasure.MeasureValue` column was inserted into the `Value` field (which had been NA otherwise). A `Censored` column was created, with 1s in the same rows to denote \<MDL results, and 0s in rows that were not censored values.  
+5.  Long-term stations were identified as those sampled on more than 1 date. This yielded 8 stations, 5 of which were sampled in all 15 years and the others sampled for 10 or 11 years. A `TRUE/FALSE` column, `LongTermStation`, was added to the data frame to denote this.  
+6.  GPS Coordinates were corrected for the following:  
+    a.  In 2020, one data point had an associated longitude of 88.xxxx rather than -88.xxxx. Now all Longitude values are checked and if they are not negative, they are multiplied by -1.  
+    b.  In 2024, 3 data points had latitudes of 32.xxxx. Details follow. These were all corrected by subtracting 2 in order to adjust to 30.xxxx. This correction is specific to the year 2024.  
+        i.  21MSWQ_WQX-MS24-496, INDUSTRIAL SEAWAY. Lat given as 32.42299. Could not find other sites in the dataset with the INDUSTRIAL SEAWAY name but based on the following stations, believe correcting this to 30.xxxx is also appropriate.  
+        ii.  21MSWQ_WQX-MS24-479, ST LOUIS BAY. Lat given as 32.35370. Other latitudes in the dataset for ST LOUIS BAY ranged from 30.31xxx to 30.37xxx, so correcting to 30.xxxx is appropriate.  
+        iii.  21MSWQ_WQX-MS24-477, MISSISSIPPI SOUND. Lat given as 32.32958. Other latitudes in the dataset for MISSISSIPPI SOUND ranged from 30.15xxx - 30.42xxx, so correcting to 30.xxxx is appropriate.  
+7.  Short names, suggested scales (log(x+1), sqrt, or continuous), and suggested color palettes were added to `ParamComprehensList.csv`, a table of parameter names and units that had previously been exported upond data processing. This should make it easier to automate mapping with custom parameter settings in a shiny app.  
+
+:::  
+
+
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(tmap)
+library(sf)
+
+# Load data
+load(here::here("data",
+                "MCA_dfs.RData"))
+
+# Compute ranges
+var_ranges <- mca_data |>
+  group_by(Parameter) |>
+  summarise(
+    min_val = min(Value, na.rm = TRUE),
+    max_val = max(Value, na.rm = TRUE)
+  )
+
+# Function to make the scales for mapping
+make_scale <- function(scale_type, palette, limits) {
+  switch(scale_type,
+         sqrt       = tm_scale_continuous_sqrt(values = palette, limits = limits),
+         log1p      = tm_scale_continuous_log1p(values = palette, limits = limits),
+         continuous = tm_scale_continuous(values = palette, limits = limits)
+  )
+}
+
+# Build scales
+var_scales <- setNames(
+  mca_params |>
+    left_join(var_ranges) |>
+    rowwise() |>
+    mutate(
+      limits = list(c(min_val, max_val)),
+      scale  = list(make_scale(ScaleType, Palette, limits))
+    ) |>
+    pull(scale),
+  mca_params$Parameter
+)
+
+# attach 'Area's to the df for summarizing
+mca_data <- mca_data |> 
+  mutate(Area = case_when(
+    LocationName == "MISSISSIPPI SOUND" ~ "Sound",
+    LocationName == "GULF OF MEXICO" ~ "Gulf",
+    stringr::str_detect(LocationName, "\\bBAY\\b") ~ "Bays",
+    .default = "Rivers/Lakes/Tributaries"
+  ),
+  Area = factor(Area, levels = c("Gulf", "Sound", "Bays", "Rivers/Lakes/Tributaries")))
+
+# make summaries
+mca_summs <- mca_data |> 
+  summarize(.by = c(Year, Area, Parameter),
+            min = min(Value, na.rm = TRUE),
+            mean = mean(Value, na.rm = TRUE),
+            median = median(Value, na.rm = TRUE),
+            max = max(Value, na.rm = TRUE),
+            IQR = IQR(Value, na.rm = TRUE),
+            sd = sd(Value, na.rm = TRUE)) |> 
+  mutate(across(c(min:sd),
+                function(x) round(x, 2))) |> 
+  arrange(Parameter, Area, Year)
+
+# make a spatial data frame
+mca_sf <- mca_data |> 
+  st_as_sf(coords = c("Lng", "Lat"),
+           crs = "WGS84")
+```
+
+```{r}
+# Parameters to loop over, in order
+params <- mca_params$Parameter
+```
+
+
+```{r}
+#| label: param-sections
+#| results: "asis"
+#| fig-width: 12
+#| fig-height: 8
+
+tab_names <- c("Faceted Map", "Time Series", "Summary Table", "Histograms")
+
+for (param in params) {
+  
+  param_data <- mca_sf |> 
+    filter(Parameter == param)
+  param_summs <- mca_summs |> 
+    filter(Parameter == param)
+  years      <- sort(unique(param_data$Year))
+
+  # --- Heading (shows in TOC) ---
+  cat("\n\n##", param, "\n\n")
+  
+  # --- Open tabset ---
+  cat("::: {.panel-tabset}\n\n")
+  
+  # --- Tab 1: Faceted Map ---
+  cat("###", tab_names[1], "\n\n")
+  
+  tmap_mode("plot")
+  
+  param_map <- tm_shape(param_data) +
+    tm_basemap("CartoDB.Positron") +
+    tm_symbols(
+      col = "purple",   
+      fill = "Value",
+      fill.scale = var_scales[[param]],
+      shape = "LongTermStation",
+      size = 1
+    ) +
+    tm_facets_wrap(by = "Year", ncol = 3) +
+    tm_title(param)
+  
+  print(param_map)
+  
+  # 
+  # 
+  # maps <- lapply(seq_along(years), function(i) {
+  #   leg <- if (i == 1) tm_legend(show = TRUE) else tm_legend(show = FALSE)
+  #   tm_shape(param_data |> filter(Year == years[i])) +
+  #     tm_basemap("CartoDB.Positron") +
+  #     tm_symbols(
+  #       col          = "purple",
+  #       fill         = "Value",
+  #       fill.scale   = var_scales[[param]],
+  #       fill.legend  = leg,
+  #       shape        = "LongTermStation",
+  #       shape.legend = leg,
+  #       size         = 1
+  #     ) +
+  #     tm_title(as.character(years[i]),
+  #              position = tm_pos_in("left", "top"))
+  # })
+  # print(tmap_arrange(maps, ncol = 3))
+  cat("\n\n")
+
+  
+  
+  # --- Tab 2: Time Series ---
+  cat("###", tab_names[2], "\n\n")
+  
+  cat("**There are two graphs in this tab**")
+  
+    
+  p2 <- ggplot(param_summs,
+               aes(x = Year,
+                   y = median,
+                   col = Area,
+                   shape = Area)) +
+    geom_line(alpha = 0.8) +
+    geom_point(size = 2,
+               stroke = 2,
+               alpha = 0.8) +
+    theme_bw() +
+    labs(title = param,
+         subtitle = "Annual Median by Region")
+  
+  print(p2)
+  cat("\n\n")
+  
+  p <- ggplot(param_data,
+              aes(x = Year,
+                  y = Value,
+                  col = Area)) +
+    geom_jitter(size = 2,
+                alpha = 0.8) +
+    # scale_y_log10() +
+    facet_wrap(~ Area) +
+    geom_smooth(se = FALSE) +
+    theme_bw() +
+    labs(title = param)
+  
+  if (mca_params$ScaleType[which(mca_params$Parameter == param)] != "continuous") {
+    p <- p +
+      scale_y_log10() +
+      labs(y = "Value\n(note log scale)")
+  }
+  
+  print(p)
+  cat("\n\n")
+  
+
+  # --- Tab 3: Summary Table ---
+  cat("###", tab_names[3], "\n\n")
+  
+  tbl <- param_data |>
+    st_drop_geometry() |> 
+    group_by(Year) |>
+    summarise(
+      N      = n(),
+      Mean   = round(mean(Value, na.rm = TRUE), 3),
+      Median = round(median(Value, na.rm = TRUE), 3),
+      SD     = round(sd(Value, na.rm = TRUE), 3),
+      IQR = round(IQR(Value, na.rm = TRUE), 3),
+      Min    = round(min(Value, na.rm = TRUE), 3),
+      Max    = round(max(Value, na.rm = TRUE), 3)
+    )
+  print(knitr::kable(tbl))
+  cat("\n\n")
+  
+  
+
+  # --- Tab 4: Histogram ---
+  cat("###", tab_names[4], "\n\n")
+  
+  cat("**There are two graphs in this tab**")
+  
+  p <- ggplot(param_data,
+              aes(x = Value,
+                  fill = Area)) +
+    geom_histogram(bins = 30,
+                   col = "gray40") +
+    theme_bw() +
+    facet_wrap(~Area, scales = "free_y") +
+    labs(title = param,
+         subtitle = "across all years")
+  
+  if (mca_params$ScaleType[which(mca_params$Parameter == param)] != "continuous") {
+    p <- p +
+      scale_x_log10() +
+      labs(x = "Value (note log scale)")
+  }
+  
+  print(p)
+  cat("\n\n")
+  
+  
+  p <- ggplot(param_data,
+              aes(x = Value)) +
+    geom_histogram(bins = 30,
+                   col = "gray40",
+                   fill = "cadetblue3") +
+    theme_bw() +
+    labs(title = param,
+         subtitle = "across all years and regions")
+  
+  if (mca_params$ScaleType[which(mca_params$Parameter == param)] != "continuous") {
+    p <- p +
+      scale_x_log10() +
+      labs(x = "Value (note log scale)")
+  }
+  
+  print(p)
+  cat("\n\n")
+  
+
+  # --- Close tabset ---
+  cat(":::\n\n")
+}
+```
