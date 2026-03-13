@@ -1,21 +1,21 @@
-Parameter,Units,ShortName,LogScale
-"Ammonia-nitrogen, Dissolved",mg/L,"NH4, Dissolved",TRUE
-"Ammonia-nitrogen, Total",mg/L,"NH4, Total",TRUE
-Chemical oxygen demand,mg/L,COD,FALSE
-"Chlorophyll a, uncorrected for pheophytin",ug/L,"Chl a, uncorrected",TRUE
-"Depth, Secchi disk depth",m,Secchi Depth,FALSE
-"Depth, bottom",ft,Total Depth,FALSE
-Dissolved oxygen (DO),mg/L,DO conc,FALSE
-Dissolved oxygen saturation,%,DO saturation,FALSE
-"Kjeldahl nitrogen, Total",mg/L,TKN,TRUE
-"Nitrate + Nitrite, Total",mg/L,"NOx, Total",TRUE
-"Nitrate, Dissolved",mg/L,"NO3, Dissolved",TRUE
-"Nitrite, Dissolved",mg/L,"NO2, Dissolved",TRUE
-"Orthophosphate, Dissolved",mg/L,"PO4, Dissolved",TRUE
-"Phosphorus, Total",mg/L,TP,TRUE
-Salinity,ppt,Salinity,FALSE
-Specific conductance,umho/cm,SpCond,FALSE
-"Temperature, water",deg C,Water Temp,FALSE
-"Total suspended solids, Suspended",mg/L,TSS,FALSE
-Turbidity,NTU,Turbidity,TRUE
-pH,,pH,FALSE
+Parameter,Units,ShortName,LogScale,ScaleType,Palette,Notes
+"Ammonia-nitrogen, Dissolved",mg/L,"NH4, Dissolved",TRUE,log1p,brewer.yl_or_rd,
+"Ammonia-nitrogen, Total",mg/L,"NH4, Total",TRUE,log1p,brewer.yl_or_rd,
+Chemical oxygen demand,mg/L,COD,FALSE,log1p,brewer.yl_or_br,
+"Chlorophyll a, uncorrected for pheophytin",ug/L,"Chl a, uncorrected",TRUE,sqrt,brewer.yl_gn,
+"Depth, Secchi disk depth",m,Secchi Depth,FALSE,continuous,brewer.yl_gn_bu,
+"Depth, bottom",ft,Total Depth,FALSE,continuous,brewer.bu_pu,
+Dissolved oxygen (DO),mg/L,DO conc,FALSE,continuous,brewer.yl_gn_bu,
+Dissolved oxygen saturation,%,DO saturation,FALSE,continuous,brewer.rd_yl_gn,Diverging around 100%; consider intervals at 90/100/110
+"Kjeldahl nitrogen, Total",mg/L,TKN,TRUE,log1p,brewer.yl_or_rd,
+"Nitrate + Nitrite, Total",mg/L,"NOx, Total",TRUE,log1p,brewer.yl_or_rd,
+"Nitrate, Dissolved",mg/L,"NO3, Dissolved",TRUE,log1p,brewer.yl_or_rd,
+"Nitrite, Dissolved",mg/L,"NO2, Dissolved",TRUE,log1p,brewer.yl_or_rd,
+"Orthophosphate, Dissolved",mg/L,"PO4, Dissolved",TRUE,log1p,brewer.yl_gn,
+"Phosphorus, Total",mg/L,TP,TRUE,log1p,brewer.yl_gn,
+Salinity,ppt,Salinity,FALSE,continuous,brewer.yl_gn_bu,
+Specific conductance,umho/cm,SpCond,FALSE,continuous,brewer.yl_gn_bu,
+"Temperature, water",deg C,Water Temp,FALSE,continuous,brewer.bu_rd,
+"Total suspended solids, Suspended",mg/L,TSS,FALSE,sqrt,brewer.yl_or_br,
+Turbidity,NTU,Turbidity,TRUE,sqrt,brewer.yl_or_br,
+pH,,pH,FALSE,continuous,brewer.rd_yl_gn,Fixed limits 6-9 (and truncate outliers) or 0-14; diverging around 7

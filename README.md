@@ -16,8 +16,5 @@ This repository contains code for a Shiny app to explore MDEQ Mississippi Coasta
         i.  21MSWQ_WQX-MS24-496, INDUSTRIAL SEAWAY. Lat given as 32.42299. Could not find other sites in the dataset with the INDUSTRIAL SEAWAY name but based on the following stations, believe correcting this to 30.xxxx is also appropriate.  
         ii.  21MSWQ_WQX-MS24-479, ST LOUIS BAY. Lat given as 32.35370. Other latitudes in the dataset for ST LOUIS BAY ranged from 30.31xxx to 30.37xxx, so correcting to 30.xxxx is appropriate.  
         iii.  21MSWQ_WQX-MS24-477, MISSISSIPPI SOUND. Lat given as 32.32958. Other latitudes in the dataset for MISSISSIPPI SOUND ranged from 30.15xxx - 30.42xxx, so correcting to 30.xxxx is appropriate.  
+7.  Short names, suggested scales (log(x+1), sqrt, or continuous), and suggested color palettes were added to `ParamComprehensList.csv`, a table of parameter names and units that had previously been exported upond data processing. This should make it easier to automate mapping with custom parameter settings in a shiny app.  
 
-### To address:
-
-1.  some data point (chlorophyll) in 2020 is plotted in Asia - maybe a forgotten "-" in coords. check.
-2.  a few data points (chlorophyll) in 2024 are plotted in very inland MS - look into these
