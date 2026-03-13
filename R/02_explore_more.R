@@ -31,7 +31,7 @@ tmp2 <- mca_data |> filter(Parameter == parm) |>
            crs = "WGS84")
 tmp2$hover_text <- paste(
   "Parameter:", tmp2$Parameter,
-  "\nStation:", tmp2$Station,
+  "\nArea:", tmp2$LocationName,
   "\nValue:", round(tmp2$Value, 2)
 )
 

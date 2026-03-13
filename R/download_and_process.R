@@ -4,7 +4,7 @@ library(dplyr)
 # had to grab from website
 # this is project ids MCA10-MCA24
 
-query_url <- "https://www.waterqualitydata.us/#statecode=US%3A28&organization=21MSWQ_WQX&sampleMedia=Water&project=MCA10&project=MCA11&project=MCA12&project=MCA13&project=MCA14&project=MCA15&project=MCA16&project=MCA17&project=MCA18&project=MCA19&project=MCA20&project=MCA21&project=MCA22&project=MCA23&project=MCA24&startDateLo=01-01-2000&startDateHi=12-31-2025&mimeType=csv&dataProfile=resultPhysChem&providers=NWIS&providers=STORET"
+# query_url <- "https://www.waterqualitydata.us/#statecode=US%3A28&organization=21MSWQ_WQX&sampleMedia=Water&project=MCA10&project=MCA11&project=MCA12&project=MCA13&project=MCA14&project=MCA15&project=MCA16&project=MCA17&project=MCA18&project=MCA19&project=MCA20&project=MCA21&project=MCA22&project=MCA23&project=MCA24&startDateLo=01-01-2000&startDateHi=12-31-2025&mimeType=csv&dataProfile=resultPhysChem&providers=NWIS&providers=STORET"
 
 
 
@@ -27,8 +27,8 @@ dat_clean <- dat |>
     SurfaceDepthUnits = ActivityTopDepthHeightMeasure.MeasureUnitCode,
     TotalDepth = ActivityBottomDepthHeightMeasure.MeasureValue,
     TotalDepthUnits = ActivityBottomDepthHeightMeasure.MeasureUnitCode,
-    MonitoringLocationIdentifier,
-    Station = MonitoringLocationName,
+    LocationID = MonitoringLocationIdentifier,
+    LocationName = MonitoringLocationName,
     DetectionResult = ResultDetectionConditionText,  # sometimes has 'present below quantification limit'
     AcceptanceStatus = ResultStatusIdentifier,   # Accepted or not
     TypeOfValue = ResultValueTypeName,   # Actual or Calculated
@@ -106,10 +106,10 @@ dat_clean2 |>
 # doesn't seem to be a labeling error
 
 
-dat_clean2 |> 
-  filter(ParameterNew == "Depth, Secchi disk depth",
-         Units == "ft") |>
-  View()
+# dat_clean2 |> 
+#   filter(ParameterNew == "Depth, Secchi disk depth",
+#          Units == "ft") |>
+#   View()
 # it's 2014 when they reported it in feet
 
 # convert
@@ -126,9 +126,24 @@ table(dat_clean3$AcceptanceStatus)
 
 # remake that table of units
 mca_units <- dat_clean3 |> 
-  select(ParameterNew, Units) |> 
+  select(Parameter = ParameterNew, Units) |> 
   distinct() |> 
-  filter(Units != "")
+  filter(Units != "") |> 
+  arrange(Parameter)
+
+# save out - commented so it won't re-run every time
+
+# write.csv(mca_units, here::here("data",
+#                                 "ParamUnitList.csv"),
+#           row.names = FALSE,
+#           na = "")
+
+# do some manual things in that sheet - apply shorter names and
+# specify whether a log scale would be appropriate 
+
+# read back in
+mca_params <- read.csv(here::here("data",
+                                  "ParamComprehensList.csv"))
 
 mca_data <- dat_clean3 |> 
   select(
@@ -144,15 +159,19 @@ mca_data <- dat_clean3 |>
   ) |> 
   select(-ParameterDetail, -ParameterFull, -Parameter) |> 
   rename(Parameter = ParameterNew) |> 
-  arrange(Date, Parameter)
+  arrange(Date, Parameter) |> 
+  mutate(Lng = case_when(Lng > 0 ~ Lng * -1,
+                         .default = Lng),
+         Lat = case_when(Year == 2024 & Lat > 32 ~ Lat - 2,
+                         .default = Lat))
 
 mca_repeatStns <- mca_data |> 
-  summarize(.by = MonitoringLocationIdentifier,
+  summarize(.by = LocationID,
             n = length(unique(Year))) |> 
   filter(n > 1)
 
 mca_data <- mca_data |> 
-  mutate(LongTermStation = case_when(MonitoringLocationIdentifier %in% mca_repeatStns$MonitoringLocationIdentifier ~ TRUE,
+  mutate(LongTermStation = case_when(LocationID %in% mca_repeatStns$LocationID ~ TRUE,
                                      .default = FALSE))
 
 # 8 stations that have been sampled more than once
@@ -161,6 +180,6 @@ mca_data <- mca_data |>
 
 
 # save out ----
-save(mca_data, mca_units, mca_repeatStns,
+save(mca_data, mca_params, mca_repeatStns,
      file = here::here("data",
                        "MCA_dfs.RData"))
